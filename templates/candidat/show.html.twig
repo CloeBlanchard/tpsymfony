@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}candidat
+{% endblock %}
+
+{% block body %}
+	<h1>candidat</h1>
+
+	<table class="table">
+		<tbody>
+			<tr>
+				<th>Id</th>
+				<td>{{ candidat.id }}</td>
+			</tr>
+			<tr>
+				<th>nom</th>
+				<td>{{ candidat.nom }}</td>
+			</tr>
+			<tr>
+				<th>prenom</th>
+				<td>{{ candidat.prenom }}</td>
+			</tr>
+            <tr>
+				<th>mail</th>
+				<td>{{ candidat.mail }}</td>
+			</tr>
+            <tr>
+				<th>telephone</th>
+				<td>{{ candidat.telephone }}</td>
+			</tr>
+		</tbody>
+	</table>
+
+	<a href="{{ path('app_candidat_index') }}">back to list</a>
+
+	<a href="{{ path('app_candidat_edit', {'id': candidat.id}) }}">edit</a>
+
+	{{ include('candidat/_delete_form.html.twig') }}
+{% endblock %}

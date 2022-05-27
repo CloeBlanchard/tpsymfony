@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}promotion index
+{% endblock %}
+
+{% block body %}
+	<h1>promotion index</h1>
+
+	<table class="table">
+		<tbody>
+			{% for items in promotion %}
+				<tr>
+					<td>{{ items.id }}</td>
+					<td>{{ items.nom }}</td>
+					<td>{{ items.formation }}</td>
+                    <td>{{ items.referent }}</td>
+					<td>
+						<a href="{{ path('app_formation_show', {'id': items.id}) }}">show</a>
+						<a href="{{ path('app_formation_edit', {'id': items.id}) }}">edit</a>
+					</td>
+				</tr>
+			{% else %}
+				<tr>
+					<td colspan="6">no records found</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+
+	<a href="{{ path('app_formation_new') }}">Create new</a>
+{% endblock %}

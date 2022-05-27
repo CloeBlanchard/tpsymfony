@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}salle index
+{% endblock %}
+
+{% block body %}
+	<h1>salle index</h1>
+
+	<table class="table">
+		<tbody>
+			{% for items in salle %}
+				<tr>
+					<td>{{ items.id }}</td>
+					<td>{{ items.nom }}</td>
+					<td>{{ items.session }}</td>
+					<td>
+						<a href="{{ path('app_salle_show', {'id': items.id}) }}">show</a>
+						<a href="{{ path('app_salle_edit', {'id': items.id}) }}">edit</a>
+					</td>
+				</tr>
+			{% else %}
+				<tr>
+					<td colspan="6">no records found</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+
+	<a href="{{ path('app_salle_new') }}">Create new</a>
+{% endblock %}

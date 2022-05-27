@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}formateur index
+{% endblock %}
+
+{% block body %}
+	<h1>formateur index</h1>
+
+	<table class="table">
+		<tbody>
+			{% for items in formateur %}
+				<tr>
+					<td>{{ items.id }}</td>
+					<td>{{ items.nom }}</td>
+					<td>{{ items.prenom }}</td>
+					<td>{{ items.telephone }}</td>
+					<td>{{ items.mail }}</td>
+					<td>
+						<a href="{{ path('app_formateur_show', {'id': items.id}) }}">show</a>
+						<a href="{{ path('app_formateur_edit', {'id': items.id}) }}">edit</a>
+					</td>
+				</tr>
+			{% else %}
+				<tr>
+					<td colspan="6">no records found</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+
+	<a href="{{ path('app_formateur_new') }}">Create new</a>
+{% endblock %}

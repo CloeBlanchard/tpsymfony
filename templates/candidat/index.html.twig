@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}candidat index
+{% endblock %}
+
+{% block body %}
+	<h1>candidat index</h1>
+
+	<table class="table">
+		<tbody>
+			{% for items in candidat %}
+				<tr>
+					<td>{{ items.id }}</td>
+					<td>{{ items.nom }}</td>
+					<td>{{ items.prenom }}</td>
+                    <td>{{ items.mail }}</td>
+                    {# j'ai mis en string au lieu d'integer c'est pas bien je sais #}
+                    <td>{{ items.telephone }}</td>
+                    <td>{{ items.promotion }}</td>
+					<td>
+						<a href="{{ path('app_candidat_show', {'id': items.id}) }}">show</a>
+						<a href="{{ path('app_candidat_edit', {'id': items.id}) }}">edit</a>
+					</td>
+				</tr>
+			{% else %}
+				<tr>
+					<td colspan="6">no records found</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+
+	<a href="{{ path('app_candidat_new') }}">Create new</a>
+{% endblock %}
